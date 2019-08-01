@@ -10,8 +10,8 @@ router.get('/garden', (req, res) => {
 
     userReference.on("value", 
 			  function(snapshot) {
-					console.log(snapshot.val());
-					res.json(snapshot.val());
+					let array = Object.entries(snapshot.val());
+					res.json(array);
 					userReference.off("value");
 					}, 
 			  function (errorObject) {
@@ -27,8 +27,8 @@ router.get('/electronic', (req, res) => {
 
     userReference.on("value", 
 			  function(snapshot) {
-					console.log(snapshot.val());
-					res.json(snapshot.val());
+				let array = Object.entries(snapshot.val());
+				res.json(array);
 					userReference.off("value");
 					}, 
 			  function (errorObject) {
@@ -44,8 +44,8 @@ router.get('/painting', (req, res) => {
 
     userReference.on("value", 
 			  function(snapshot) {
-					console.log(snapshot.val());
-					res.json(snapshot.val());
+				let array = Object.entries(snapshot.val());
+				res.json(array);
 					userReference.off("value");
 					}, 
 			  function (errorObject) {
