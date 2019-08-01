@@ -1,5 +1,7 @@
 {
   "name": "leroymerlin",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
