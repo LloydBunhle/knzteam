@@ -10,4 +10,29 @@
 
 <ion-content>
 
+    <ion-list-header>Select when would you like to rent the tools and when would you like to return them</ion-list-header>
+    <!-- <h1 class ="center">Select start time and end time</h1> -->
+      <ion-item>
+          <ion-label>Start Date</ion-label>
+          <ion-datetime displayFormat="D MMM YYYY" min="1997" max="2030" value="2019-07-02T11:06Z" ></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-label>End Date</ion-label>
+            <ion-datetime displayFormat="D MMM YYYY " min="1997" max="2030" value="2019-07-02T11:06Z"></ion-datetime>
+          </ion-item>
+    
+    
+          <ion-list>
+           
+              <ion-item>
+                <ion-label>Delivery/Collection</ion-label>
+                <ion-select placeholder="Select One">
+                  <ion-select-option value="d">Delivery</ion-select-option>
+                  <ion-select-option value="p">Collect </ion-select-option>
+                </ion-select>
+              </ion-item>
+          </ion-list>
+    
+    
+
 </ion-content>

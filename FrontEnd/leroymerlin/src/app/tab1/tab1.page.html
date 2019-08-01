@@ -46,7 +46,10 @@
 
                   <ion-card-content>
                     <img src="https://via.placeholder.com/300x300">
-                    <ion-button >Rent</ion-button>
+                    <ion-label>Select Quantity</ion-label>       
+                    <ion-icon style="font-size: 16px" name="remove-circle-outline" (click)="decrement()"></ion-icon>
+                    {{currentNumber}}
+                    <ion-icon style="font-size: 16px" name="add-circle-outline" (click)="increment()"></ion-icon>
                   </ion-card-content>
                 </ion-card-header>
               </ion-card>
@@ -68,7 +71,10 @@
                 </ion-card-title>
                 <ion-card-content>
                   <img  src="assets/proxxon-rotary-tools-28512-64_1000.jpg">
-                  <ion-button  >Buy</ion-button><ion-button  >Rent</ion-button>
+                  <ion-label>Select Quantity</ion-label>       
+                <ion-icon style="font-size: 28px" name="remove-circle-outline" (click)="decrement()"></ion-icon>
+                {{currentNumber}}
+                <ion-icon style="font-size: 28px" name="add-circle-outline" (click)="increment()"></ion-icon>
                 </ion-card-content>
               </ion-card-header>
             </ion-card>
@@ -83,9 +89,13 @@
                   </ion-card-title>
                   <ion-card-content>
                     <img  src="assets/Tillie-V2.jpg">
-                    <ion-button  >Buy</ion-button><ion-button  >Rent</ion-button>
+                    <ion-label>Select Quantity</ion-label>       
+                    <ion-icon style="font-size: 28px" name="remove-circle-outline" (click)="decrement()"></ion-icon>
+                    {{currentNumber}}
+                    <ion-icon style="font-size: 28px" name="add-circle-outline" (click)="increment()"></ion-icon>
                   </ion-card-content>
                 </ion-card-header>
               </ion-card>
-         
+
+    <ion-button (click) ="check()">Check</ion-button>
 </ion-content>

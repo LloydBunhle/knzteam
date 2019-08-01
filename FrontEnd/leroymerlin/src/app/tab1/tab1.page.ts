@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import {IonSlides} from '@ionic/angular';
+import { ActionSheetController } from '@ionic/angular';
+import { NavController } from "@ionic/angular";
+import { ModalController } from '@ionic/angular';
+import { ViewmodalPage } from '../viewmodal/viewmodal.page';
+
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -70,10 +76,42 @@ export class Tab1Page  implements OnInit {
     centeredSlides: true
   };
 
-  constructor() {}
+
+  constructor(public modalController: ModalController, private router: Router) { }
+
+  async presentModal() {
+
+    const modal = await this.modalController.create({
+      component: ViewmodalPage,
+      componentProps: {  }
+
+    });
+  
+    modal.onDidDismiss().then((dataReturned) => {
+      if (dataReturned !== null) {
+        // this.dataReturned = dataReturned.data;
+        // alert('Modal Sent Data :'+ dataReturned);
+      }
+    });
+  
+    return await modal.present();
+  }
+  check() {
+    this.router.navigate(['/settime']);
+  }
+
+  private currentNumber = 0;
+
+
+private increment () {
+  this.currentNumber++;
+}
+
+private decrement () {
+  this.currentNumber--;
+}
 
   
-
   ngOnInit() {
     this.items = this.getProducts() 
   }
