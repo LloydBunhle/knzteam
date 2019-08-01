@@ -1,10 +1,10 @@
 let express = require('express');
 let firebase = require('firebase');
 let bodyParser = require('body-parser');
-
 let app = express();
-app.use(bodyParser.json()); 
 
+app.use(bodyParser.urlencoded({extended:false}));  /** reading body content  */
+app.use(bodyParser.json());
 
 const firebaseConfig = {
     apiKey: "AIzaSyAeI-lOahlg2h-mIi2maXtHrHLRO5Sd1CM",
@@ -17,17 +17,34 @@ const firebaseConfig = {
   };
 firebase.initializeApp(firebaseConfig);
 
-// #########################################GARDEN####################################
+
+
+
+// #########################################ALLOWING CROSS ORIGIN####################################
+
+app.use((req,res,next)=>{ 
+  res.header('Access-Control-Allow-Origin','*');
+  res.header('Access-Control-Allow_Headers','*');
+  if(req.method === 'OPTIONS'){
+      res.header('Access-Control-Allow-Methods','PUT','POST','PATCH','DELETE','GET');
+      return releaseEvents.status(200).json({});
+  }
+  next();
+})
+// ######################################### GARDEN ####################################
 //get all the 
-app.get('/garden', (req, res) => {
+app.get('/garden/', (req, res) => {
 
 	console.log("HTTP Get Request");
 	var userReference = firebase.database().ref("/garden");
 
     userReference.on("value", 
 			  function(snapshot) {
-					console.log(snapshot.val());
-					res.json(snapshot.val());
+          let array = Object.entries(snapshot.val());
+
+          console.log(array);
+          
+					res.json(array);
 					userReference.off("value");
 					}, 
 			  function (errorObject) {
@@ -38,7 +55,7 @@ app.get('/garden', (req, res) => {
 
 
 
-// #########################################ELECTRONIC TOOLS####################################
+// ######################################### ELECTRONIC TOOLS ####################################
 
 app.get('/electronic', (req, res) => {
 
@@ -57,7 +74,7 @@ app.get('/electronic', (req, res) => {
 			 });
 });
 
-// ########################################PAINTING####################################
+// ######################################## PAINTING ####################################
 app.get('/painting', (req, res) => {
 
 	console.log("HTTP Get Request");
@@ -75,7 +92,7 @@ app.get('/painting', (req, res) => {
 			 });
 });
 
-// ############################################ADDING TO DB#######################################
+// ############################################ ADDING TO DB #######################################
 //Create new instance
 app.post('/add', function (req, res) {
 
