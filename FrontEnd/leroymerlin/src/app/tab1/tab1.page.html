@@ -3,96 +3,81 @@
     <ion-title *ngIf="!isSearchbarOpened">
       Rent  
     </ion-title>
-   
     <ion-searchbar *ngIf="isSearchbarOpened" showCancelButton="true" (ionCancel)="isSearchbarOpened=false" ></ion-searchbar>
-    <ion-button size="small" fill="clear" *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true" slot="end">
-     <ion-icon  slot="icon-only" class="search"name="search"></ion-icon>
-    </ion-button>
+  <ion-button size="small" fill="clear" *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true" slot="end">
+   <ion-icon slot="icon-only" class="search"name="search"></ion-icon>
+  </ion-button>
     <ion-button routerLink="/cart" fill="clear" size="small" slot="end">
      <ion-icon slot="icon-only" name="cart"></ion-icon>
     </ion-button>
 
   </ion-toolbar>
+
 </ion-header>
 
-<ion-content>
-
-    
-
-<ion-card>
-  <ion-card-header>
-
-      <ion-card-title style="font-size: 16px; text-align:center">
-          Categories
-      </ion-card-title>
-
-  </ion-card-header>
-    <ion-grid>
-        <ion-row>
-          <ion-col>
-              <ion-card>
-                  <img src="/assets/shapes.svg" alt="" />
-                  <ion-card-header>
-                    <ion-card-subtitle>BREAKING & DRILLING</ion-card-subtitle>
-                   
-                  </ion-card-header>
-                </ion-card>
-          </ion-col>
+<ion-content >
+     
+  <ion-card>
+    <ion-card-header style="text-align: center">Categories</ion-card-header>
+    <div *ngFor="let cat of items" class="category-block">
+        <ion-card>
           
-          <ion-col>
-              <ion-card>
-                  <img src="/assets/shapes.svg" alt="" />
-                  <ion-card-header>
-                    <ion-card-subtitle>ELECTRIC TOOLS</ion-card-subtitle>
-                    <br />
-                  </ion-card-header>
-              
-                </ion-card>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-              <ion-card>
-                  <img src="/assets/shapes.svg" alt="" />
-                  <ion-card-header>
-                    <ion-card-subtitle>GENERATORS & WELDING</ion-card-subtitle>
-                   
-                  </ion-card-header>
-              
-                </ion-card>
-          </ion-col>
-          <ion-col>
-              <ion-card>
-                  <img src="/assets/shapes.svg" alt="" />
-                  <ion-card-header>
-                    <ion-card-subtitle>LAWN & GARDEN 
-                    </ion-card-subtitle>
-                    <br />
-                  </ion-card-header>
-              
-                </ion-card>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-   
-    </ion-card>
-    
+  <ion-row no-padding style="margin-bottom: 4px;">
+
+      <ion-col text-left button tappable (click)="cat.expanded = !cat.expanded" align-self-center>
+          {{ cat.category }}  
+      </ion-col>
+      <img style="max-height: 3vh; max-width:10%" src="https://via.placeholder.com/300x300"> 
+    </ion-row>
+  </ion-card>
+  
+  
       <ion-slides [options]="sliderConfig">
-          <ion-slide >
-            <div >
-              <ion-card>
+          <ion-slide *ngFor="let product of cat.products">
+              <div *ngIf="cat.expanded">
+              <ion-card >
                 <ion-card-header>
+                  <ion-card-subtitle style="font-size: 16px">
+                      {{ product.name }} 
+                  </ion-card-subtitle>
                   <ion-card-title style="font-size: 16px">
-                      Product name
+                    R{{ product.price }}
                   </ion-card-title>
+
                   <ion-card-content>
                     <img src="https://via.placeholder.com/300x300">
-                    <ion-button expand="full" (click)="addToCart(product)">Rent</ion-button>
+                    <ion-button >Rent</ion-button>
                   </ion-card-content>
                 </ion-card-header>
               </ion-card>
             </div>
           </ion-slide>
+
         </ion-slides>
- 
+
+        </div>
+      </ion-card>
+
+        <ion-slides>
+        <ion-slide>
+            <div >
+            <ion-card >
+              <ion-card-header>
+                <ion-card-subtitle style="font-size: 16px">
+                   Product Name 
+                </ion-card-subtitle>
+                <ion-card-title style="font-size: 12px">
+                  R00-00
+                </ion-card-title>
+                <ion-card-content>
+                  <img  src="https://via.placeholder.com/300x300">
+                  <ion-button  >Rent</ion-button>
+                </ion-card-content>
+              </ion-card-header>
+            </ion-card>
+          </div>
+        </ion-slide>
+
+      </ion-slides>
+    
 </ion-content>
