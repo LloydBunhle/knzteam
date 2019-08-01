@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "696400856270",
+    "firebase_url": "https://leroymerlin-11bf6.firebaseio.com",
+    "project_id": "leroymerlin-11bf6",
+    "storage_bucket": "leroymerlin-11bf6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696400856270:android:2a913d9d88bf8c93",
+        "android_client_info": {
+          "package_name": "com.company.leroymerlin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "696400856270-akqb5peqftpjsh3rvc8or06kpma83tos.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA58wqxPHF5eAqwj6Bj9QM76X-Nsk_kH0w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "696400856270-akqb5peqftpjsh3rvc8or06kpma83tos.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
