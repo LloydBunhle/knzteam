@@ -17,11 +17,12 @@ const firebaseConfig = {
   };
 firebase.initializeApp(firebaseConfig);
 
+// #########################################GARDEN####################################
 //get all the 
-app.get('/all', (req, res) => {
+app.get('/garden', (req, res) => {
 
 	console.log("HTTP Get Request");
-	var userReference = firebase.database().ref("/Product");
+	var userReference = firebase.database().ref("/garden");
 
     userReference.on("value", 
 			  function(snapshot) {
@@ -35,19 +36,60 @@ app.get('/all', (req, res) => {
 			 });
 });
 
+
+
+// #########################################ELECTRONIC TOOLS####################################
+
+app.get('/electronic', (req, res) => {
+
+	console.log("HTTP Get Request");
+	var userReference = firebase.database().ref("/electronic");
+
+    userReference.on("value", 
+			  function(snapshot) {
+					console.log(snapshot.val());
+					res.json(snapshot.val());
+					userReference.off("value");
+					}, 
+			  function (errorObject) {
+					console.log("The read failed: " + errorObject.code);
+					res.send("The read failed: " + errorObject.code);
+			 });
+});
+
+// ########################################PAINTING####################################
+app.get('/painting', (req, res) => {
+
+	console.log("HTTP Get Request");
+	var userReference = firebase.database().ref("/painting");
+
+    userReference.on("value", 
+			  function(snapshot) {
+					console.log(snapshot.val());
+					res.json(snapshot.val());
+					userReference.off("value");
+					}, 
+			  function (errorObject) {
+					console.log("The read failed: " + errorObject.code);
+					res.send("The read failed: " + errorObject.code);
+			 });
+});
+
+// ############################################ADDING TO DB#######################################
 //Create new instance
-app.post('/product', function (req, res) {
+app.post('/add', function (req, res) {
 
 	console.log("HTTP Post Request");
 
-    let category = req.body.Category;
     let name  = req.body.Name;
-	let path = req.body.Path;
+    let comp = req.body.Complimetary;
+    let price = req.body.Price;
+	  let path = req.body.Path;
 	
 
-	let referencePath = '/Product/'+category+'/';
+	let referencePath = '/garden/'+name+'/';
 	let userReference = firebase.database().ref(referencePath);
-	userReference.set({Name : name ,Path: path}, 
+	userReference.set({Name : name , Complimetary : comp , Path: path , Price : price}, 
 				 function(error) {
 					if (error) {
 						res.send("Data could not be saved." + error);
@@ -57,7 +99,6 @@ app.post('/product', function (req, res) {
 					}
 			});
 });
-
 //the port number
 const port = process.env.PORT || 3000
 
