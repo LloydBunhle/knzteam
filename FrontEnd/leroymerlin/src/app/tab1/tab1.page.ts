@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import {IonSlides} from '@ionic/angular';
-import { ActionSheetController } from '@ionic/angular';
+import { PopoverController } from '@ionic/angular';
 import { NavController } from "@ionic/angular";
-import { ModalController } from '@ionic/angular';
+
 import { ViewmodalPage } from '../viewmodal/viewmodal.page';
+
+import { PopoverComponent } from '.././popover/popover.component';
 
 import { Router } from '@angular/router';
 
@@ -19,7 +21,7 @@ import { Router } from '@angular/router';
 export class Tab1Page  implements OnInit {
 
 
-
+ 
   items = [];
 
   private data = [
@@ -79,31 +81,19 @@ export class Tab1Page  implements OnInit {
   };
 
 
-  constructor(public modalController: ModalController, private router: Router) { }
+  constructor( private router: Router,  public popoverController: PopoverController ) { }
 
-  async presentModal() {
-
-    const modal = await this.modalController.create({
-      component: ViewmodalPage,
-      componentProps: {  }
-
+  async quantity(ev: any) {
+    const popover = await this.popoverController.create({
+        component: PopoverComponent,
+        event: ev,
+        animated: true,
+        showBackdrop: true
     });
-  
-    modal.onDidDismiss().then((dataReturned) => {
-      if (dataReturned !== null) {
-        // this.dataReturned = dataReturned.data;
-        // alert('Modal Sent Data :'+ dataReturned);
-      }
-    });
-  
-    return await modal.present();
-  }
-  check() {
-    this.router.navigate(['/settime']);
+    return await popover.present();
   }
 
   private currentNumber = 0;
-
 
 private increment () {
   this.currentNumber++;
@@ -115,7 +105,9 @@ private decrement () {
 
   
   ngOnInit() {
-    this.items = this.getProducts() 
+    this.items = this.getProducts();
+    this.cart = this.getCart();
+
   }
 
   getProducts() {
@@ -130,4 +122,9 @@ private decrement () {
     this.cart.push(product);
   }
 
+
+  addToCart(product) {
+    this.addProduct(product);
+  }
+ 
 }

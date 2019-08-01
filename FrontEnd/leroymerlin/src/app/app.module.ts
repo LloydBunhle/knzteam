@@ -11,11 +11,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DatePipe } from './date.pipe';
 import { ViewmodalPageModule } from './viewmodal/viewmodal.module';
+import { PopoverComponent } from '././popover/popover.component';
 
 
 @NgModule({
-  declarations: [AppComponent, DatePipe],
-  entryComponents: [],
+  declarations: [AppComponent, PopoverComponent, DatePipe],
+  entryComponents: [PopoverComponent],
   imports: [BrowserModule, HttpClientModule, IonicModule.forRoot(), AppRoutingModule,
     ViewmodalPageModule],
   providers: [
