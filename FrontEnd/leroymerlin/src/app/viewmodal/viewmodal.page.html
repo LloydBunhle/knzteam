@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Viewmodal</ion-title>
+   
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="closeModal()"><ion-icon name="close"></ion-icon></ion-button>
+
+  <ion-list-header>Select when would you like to rent the tools adn when would you like to return them</ion-list-header>
+<!-- <h1 class ="center">Select start time and end time</h1> -->
+  <ion-item>
+      <ion-label>Start Date</ion-label>
+      <ion-datetime displayFormat="D MMM YYYY" min="1997" max="2030" value="2019-07-02T11:06Z" ></ion-datetime>
+    </ion-item>
+    <ion-item>
+        <ion-label>End Date</ion-label>
+        <ion-datetime displayFormat="D MMM YYYY " min="1997" max="2030" value="2019-07-02T11:06Z"></ion-datetime>
+      </ion-item>
+
+
+      <ion-list>
+          <ion-list-header>Select type of delivery</ion-list-header>        
+          <ion-item>
+            <ion-label>Delivery</ion-label>
+            <ion-select placeholder="Select One">
+              <ion-select-option value="d">Delivery to your address</ion-select-option>
+              <ion-select-option value="p">Collect at the store</ion-select-option>
+            </ion-select>
+          </ion-item>
+      </ion-list>
+
+
+            <ion-list>
+          <!-- <ion-list-header>Select Quantity</ion-list-header>         -->
+          <ion-item>
+              <!-- <ion-list-header>How many would you like to rent?</ion-list-header>         -->
+
+            <!-- <ion-label>Select Quantity</ion-label> -->
+            <!-- <ion-select placeholder="Select One"> -->
+              <!-- <ion-select-option value="1">1</ion-select-option>
+              <ion-select-option value="2">2</ion-select-option>
+              <ion-select-option value="3">3</ion-select-option>
+              <ion-select-option value="4">4</ion-select-option>
+              <ion-select-option value="5">5</ion-select-option>
+              <ion-select-option value="6">6</ion-select-option> -->
+            <!-- </ion-select> -->
+          
+          </ion-item>
+      </ion-list>
+      <ion-list-header>Quantity</ion-list-header>        
+
+    <ion-icon name="remove-circle" (click)="decrement()"></ion-icon>
+    {{currentNumber}}
+    <ion-icon name="add-circle" (click)="increment()"></ion-icon>
+   
+</ion-content>

@@ -5,7 +5,9 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  }
+  },
+  { path: 'settime', loadChildren: './settime/settime.module#SettimePageModule' },
+  { path: 'viewmodal', loadChildren: './viewmodal/viewmodal.module#ViewmodalPageModule' }
 ];
 @NgModule({
   imports: [
