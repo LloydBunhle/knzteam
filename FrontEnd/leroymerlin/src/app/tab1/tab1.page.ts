@@ -68,6 +68,8 @@ export class Tab1Page  implements OnInit {
     // },
   ];
 
+  private cart = [];
+
   public isSearchbarOpened = false;
 
   sliderConfig = {
@@ -118,6 +120,14 @@ private decrement () {
 
   getProducts() {
     return this.data;
+  }
+
+  getCart() {
+    return this.cart;
+  }
+ 
+  addProduct(product) {
+    this.cart.push(product);
   }
 
 }
