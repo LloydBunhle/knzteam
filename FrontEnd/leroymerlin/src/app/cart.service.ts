@@ -5,6 +5,27 @@ import { Injectable } from '@angular/core';
 })
 export class CartService {
 
+  private product = [
+    {
+      
+      id: 10,
+      cname: 'Oval nail',
+      pr: 'R50',
+    },
+    {
+      id: 11,
+      cname: 'brass nail',
+      pr: 'R100',
+    },
+    {
+      id: 12,
+      cname: 'panel pins',
+      pr: 'R80',
+    }
+  
+  ];
+
+
   private data = [
     {
       category: 'BREAKING & DRILLING',
@@ -42,20 +63,34 @@ export class CartService {
   ];
  
   private cart = [];
- 
 
  
+getComplimentary(){
+  return this.product;
+}
+ 
   getProducts() {
-    return this.data;
+    return this.data; 
   }
  
   getCart() {
+    
     return this.cart;
+    
   }
- 
+
+
   addProduct(product) {
     this.cart.push(product);
   }
 
-  constructor() { }
+  addComplimentary(complimentary) {
+    this.cart.push(complimentary);
+  }
+
+
+  constructor() {
+
+
+   }
 }

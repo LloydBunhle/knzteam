@@ -11,7 +11,7 @@ export class DataService {
 
   getProducts()
 {
-  return this.http.get('http://10.1.0.104:8080/getShower');
+  return this.http.get('http://10.1.0.81:3000/profiles/luntu');
 }
 
 }
