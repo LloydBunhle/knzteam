@@ -1,27 +1,20 @@
 <ion-content>
 
     <ion-list>
-        <ion-list-header>Complimentary  Tools</ion-list-header>
-      
-        <ion-item>
-          <ion-label>Tools</ion-label>
-          <ion-select multiple="true" cancelText="No" okText="Okay!">
-              <ion-list>
-                  <ion-list-header>Objects as Values (compareWith)</ion-list-header>
-                
+        <ion-list-header>Add on tools</ion-list-header>
+     
                   <ion-item>
-                    <ion-label>Users</ion-label>
-                    <ion-select [compareWith]="compareWith">
-                      <ion-select-option *ngFor="let item of items">{{item.name + ' ' + item.price}}</ion-select-option>
+                    <ion-label>Tools</ion-label>
+                    <ion-select  [compareWith]="compareWith" multiple="true" >
+                      <ion-select-option  *ngFor="let item of items" >{{item.cname + ' ' + item.pr}} </ion-select-option>
                     </ion-select>
+                   
                   </ion-item>
+                  <ion-button (click)="addToCart(product); DismissClick()">Save</ion-button>
                 </ion-list>
          
-          </ion-select>
-        </ion-item>
-</ion-list>
 
-<ion-button (click)="DismissClick()">OK</ion-button>
+<ion-button (click)="DismissClick()">Cancel</ion-button>
 
 
 </ion-content>

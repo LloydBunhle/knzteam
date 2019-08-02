@@ -5,28 +5,27 @@ import { Injectable } from '@angular/core';
 })
 export class CartService {
 
-  items: any[] = [
+  private product= [
     {
-      id: 1,
-      name: 'hammer',
-      price: 'R12',
+      
+      id: 10,
+      cname: 'hammer',
+      pr: 'R12',
     },
     {
-      id: 2,
-      name: 'cement',
-      price: 'R90',
+      id: 11,
+      cname: 'cement',
+      pr: 'R90',
     },
     {
-      id: 3,
-      name: 'nails',
-      price: 'R20',
+      id: 12,
+      cname: 'nails',
+      pr: 'R20',
     }
+  
   ];
 
-   compareWithFn = (o1, o2) => {
-    return o1 && o2 ? o1.id === o2.id : o1 === o2;
-  };
-  
+
   private data = [
     {
       category: 'BREAKING & DRILLING',
@@ -64,11 +63,14 @@ export class CartService {
   ];
  
   private cart = [];
+  
  
-
+getComplimentary(){
+  return this.product;
+}
  
   getProducts() {
-    return this.data;
+    return this.data; 
   }
  
   getCart() {
@@ -78,6 +80,12 @@ export class CartService {
   addProduct(product) {
     this.cart.push(product);
   }
+
+  addComplimentary(complimentary) {
+    this.cart.push(complimentary);
+  }
+
+  
 
   constructor() { }
 }
