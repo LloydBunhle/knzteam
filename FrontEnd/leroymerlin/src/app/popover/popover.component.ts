@@ -12,6 +12,9 @@ export class PopoverComponent implements OnInit {
 
   private currentNumber = 0;
 
+  async DismissClick() {
+    await this.popoverController.dismiss();
+      }
 
 private increment () {
   this.currentNumber++;
@@ -24,8 +27,36 @@ private decrement () {
 
   ngOnInit() {}
 
-  async DismissClick() {
-    await this.popoverController.dismiss();
-      }
+  items: any[] = [
+    {
+      id: 1,
+      name: 'hammer',
+      price: 'R12',
+    },
+    {
+      id: 2,
+      name: 'cement',
+      price: 'R90',
+    },
+    {
+      id: 3,
+      name: 'nails',
+      price: 'R20',
+    }
+  ];
 
+   compareWithFn = (o1, o2) => {
+    return o1 && o2 ? o1.id === o2.id : o1 === o2;
+  };
+
+  // compareWith = compareWithFn;
+    
 }
+
+
+
+
+ 
+
+
+
