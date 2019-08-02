@@ -1,95 +1,108 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title *ngIf="!isSearchbarOpened">
-      Rent  
-    </ion-title>
-    <ion-searchbar *ngIf="isSearchbarOpened" showCancelButton="true" (ionCancel)="isSearchbarOpened=false" ></ion-searchbar>
-  <ion-button size="small" fill="clear" *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true" slot="end">
-   <ion-icon slot="icon-only" class="search"name="search"></ion-icon>
-  </ion-button>
-    <ion-button routerLink="/cart" fill="clear" size="small" slot="end">
-      <ion-badge *ngIf="cart.length > 0">{{ cart.length }}</ion-badge>
-     <ion-icon slot="icon-only" name="cart"></ion-icon>
+    <ion-toolbar>
+      <ion-title *ngIf="!isSearchbarOpened">
+        <img src="../assets/icon/logo.png" style="height:40px"/>
+      </ion-title>
+      <ion-searchbar *ngIf="isSearchbarOpened" showCancelButton="true" (ionCancel)="isSearchbarOpened=false" ></ion-searchbar>
+    <ion-button size="small" fill="clear" *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true" slot="end">
+     <ion-icon slot="icon-only" class="search"name="search"></ion-icon>
     </ion-button>
-
-  </ion-toolbar>
-
-</ion-header>
-
-<ion-content >
-     
-  <ion-card>
-    <ion-card-header style="text-align: center">Categories</ion-card-header>
-    <div *ngFor="let cat of items" class="category-block">
-        <ion-card>
-          
-  <ion-row no-padding style="margin-bottom: 4px;">
-
-      <ion-col text-left button tappable (click)="cat.expanded = !cat.expanded" align-self-center>
-          {{ cat.category }}  
-      </ion-col>
-      <img style="max-height: 3vh; max-width:10%" src="https://via.placeholder.com/300x300"> 
-    </ion-row>
-  </ion-card>
+      <!-- <ion-button routerLink="/cart" fill="clear" size="small" slot="end">
+        <ion-badge *ngIf="cart.length > 0">{{ cart.length }}</ion-badge>
+       <ion-icon slot="icon-only" name="cart"></ion-icon>
+      </ion-button> -->
   
+    </ion-toolbar>
   
-      <ion-slides [options]="sliderConfig">
-          <ion-slide *ngFor="let product of cat.products">
-              <div *ngIf="cat.expanded">
-              <ion-card >
-                <ion-card-header>
-                  <ion-card-subtitle style="font-size: 16px">
-                      {{ product.name }} 
-                  </ion-card-subtitle>
-                  <ion-card-title style="font-size: 16px">
-                    R{{ product.price }}
-                  </ion-card-title>
-
-                  <ion-card-content>
-                    <img src="https://via.placeholder.com/300x300">
-                    <ion-button (click)="addToCart(product); quantity()">Add to cart</ion-button>
-                  </ion-card-content>
-                </ion-card-header>
-              </ion-card>
-            </div>
-          </ion-slide>
-
-        </ion-slides>
-
-        </div>
+  </ion-header>
+   
+  <ion-content class="card-background-page">
+       
+      <ion-card>
+        <img src="assets/header.png"/>
       </ion-card>
+      <ion-card>
+          <ion-card-header  color="success" style="text-align: center ; font-size: 30px;"><strong>CATEGORIES</strong></ion-card-header>
+        </ion-card>
+      
+    <ion-content>
+      
+     <ion-card>
+         <div *ngFor="let cat of items" class="category-block">
+   
+            <ion-row no-padding class="category-banner">
+              <ion-col text-left button tappable (click)="cat.expanded = !cat.expanded" align-self-center>
+                {{ cat.category }}
+              </ion-col>
+            </ion-row>
+         
+            <ion-slides [options]="sliderConfig">
+                <ion-slide *ngFor="let product of cat.products">
+                    <div *ngIf="cat.expanded">
+                      
+                        <ion-card>
+                            <ion-card-content>
+                                <img src="assets/header.png"/>
+                            </ion-card-content>
+                            
+                            <ion-card-content>
+                             
+                              <ion-card-subtitle style="font-size: 25px">
+                          
+                                  {{ product.name }} 
+                              </ion-card-subtitle>
+                              <ion-card-title style="font-size: 20px">
+                                R{{ product.price }}
+                              </ion-card-title>
+                              <ion-button (click)="addToCart(product); quantity()">Rent</ion-button>
+                             <hr>
+                            </ion-card-content>
+                           
+                          </ion-card>
+                    <ion-card >
+                    
+                    </ion-card>
+                  </div>
+                </ion-slide>
+      
+              </ion-slides>
+         
+          </div>
+     </ion-card>
 
-            <ion-card >
-              <ion-card-header style="text-align: center">
-                <ion-card-subtitle style="font-size: 16px">
-                   Product Name 
-                </ion-card-subtitle>
-                <ion-card-title style="font-size: 12px">
-                  R00-00
-                </ion-card-title>
-                <ion-card-content>
-                  <img src="assets/proxxon-rotary-tools-28512-64_1000.jpg">
-                        
-
-                </ion-card-content>
-                <ion-button (click)="addToCart(product); quantity()">Add to cart</ion-button>
-              </ion-card-header>
-            </ion-card>
-
-            <ion-card >
-                <ion-card-header style="text-align: center">
-                  <ion-card-subtitle style="font-size: 16px">
-                     Product Name 
-                  </ion-card-subtitle>
-                  <ion-card-title style="font-size: 12px">
-                    R00-00
-                  </ion-card-title>
-                  <ion-card-content>
-                    <img  src="assets/Tillie-V2.jpg">
-                    <ion-button (click)="addToCart(product); quantity()">Add to cart</ion-button>
-                  </ion-card-content>
-                </ion-card-header>
-              </ion-card>
-
-    <!-- <ion-button (click) ="check()">Check</ion-button> -->
-</ion-content>
+     <ion-card>
+        <ion-card-header  color="success" style="text-align: center ; font-size: 30px;"><strong>PROMOTIONS FOR YOU </strong></ion-card-header>
+      </ion-card>
+  
+   
+ 
+  
+  <ion-card>
+      
+  
+      
+    </ion-card>
+  
+    <ion-card >
+        <ion-card-header style="text-align: center">
+          <ion-card-subtitle style="font-size: 16px">
+              <STRONG>BUY : </STRONG>
+              R2000
+              <br>
+              <STRONG>RENT FOR : </STRONG>
+              R1500
+          </ion-card-subtitle>
+         
+          <ion-card-content>
+            <img src="assets/proxxon-rotary-tools-28512-64_1000.jpg">
+                  
+  
+          </ion-card-content>
+          <ion-button (click)="addToCart(product); quantity()">More</ion-button>
+        </ion-card-header>
+      </ion-card>
+  
+  
+    </ion-content>
+   
+  </ion-content>

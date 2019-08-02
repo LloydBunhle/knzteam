@@ -1,9 +1,47 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Tab Three
+     Profile
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+    <ion-item-group>
+        <ion-item-divider>
+          <ion-label>Personal Details</ion-label>
+        </ion-item-divider>
+      
+        <ion-item>
+          <ion-label>{{profileName}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{profileLname}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{profileAddress}}</ion-label>
+        </ion-item>
+      </ion-item-group>
+    
+
+      <ion-item-group>
+          <ion-item-divider>
+            <ion-label>Bank Details</ion-label>
+          </ion-item-divider>
+        
+          <ion-item>
+            <ion-label>{{profileId}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>{{profileBank}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>09897</ion-label>
+          </ion-item>
+        </ion-item-group>
+       
+        <img *ngIf="!isImgLoaded" src="assets/icon/auger.jpeg" style="margin: 20px; width: 370px; height: 250px">
+        <img [src]="profileurl" style="margin: 20px; width: 370px; height: 250px" (load)="isImgLoaded = true" alt="photo"
+          [hidden]="!isImgLoaded" />
+         
+</ion-content>

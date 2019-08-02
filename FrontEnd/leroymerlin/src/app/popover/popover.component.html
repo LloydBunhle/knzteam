@@ -1,17 +1,19 @@
 <ion-content>
 
     <ion-list>
-        <ion-list-header>Complementary tools</ion-list-header>
-      
-        <ion-item>
-          <ion-label>Tools</ion-label>
-          <ion-select [compareWith]="compareWith">
-            <ion-select-option *ngFor="let user of users">{{user.first + ' ' + user.last}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
-
-<ion-button (click)=" DismissClick()">OK</ion-button>
-
-
+        <ion-list-header>Tools you may need:</ion-list-header>
+     
+                  <ion-item>
+                    <ion-label>Tools</ion-label>
+                    <ion-select  [compareWith]="compareWith" multiple="true" >
+                      <ion-select-option  *ngFor="let item of items" >{{item.cname + ' ' + item.pr}} </ion-select-option>
+                    </ion-select>
+                   
+                  </ion-item>
+                  <p style="font-size:14px; text-align: center">Once of payment</p>
+                 
+                  <ion-button (click)="DismissClick()">Proceed</ion-button> <ion-button (click)="DismissClick()">Cancel</ion-button>
+                </ion-list>
+         
 </ion-content>
+

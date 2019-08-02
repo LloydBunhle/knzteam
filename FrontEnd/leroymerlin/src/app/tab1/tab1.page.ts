@@ -25,7 +25,7 @@ export class Tab1Page  implements OnInit {
  
   items = [];
 
-   cart = [];
+   cart :any;
 
   public isSearchbarOpened = false;
 
@@ -61,6 +61,9 @@ export class Tab1Page  implements OnInit {
     this.cartService.addProduct(product);
 
     console.log(product)
+  }
+  setCarttozero(){
+    this.cart == 0 ;
   }
  
 }
