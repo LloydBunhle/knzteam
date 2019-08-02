@@ -1,14 +1,15 @@
 <ion-content>
 
-<ion-list>
-    <ion-item>
-      <ion-label>Select Quantity</ion-label>       
-
-      <ion-icon style="font-size: 22px" name="remove-circle-outline" (click)="decrement()"></ion-icon>
-      {{currentNumber}}
-      <ion-icon style="font-size: 22px" name="add-circle-outline" (click)="increment()"></ion-icon>
-    </ion-item>
-</ion-list>
+    <ion-list>
+        <ion-list-header>Complementary tools</ion-list-header>
+      
+        <ion-item>
+          <ion-label>Tools</ion-label>
+          <ion-select [compareWith]="compareWith">
+            <ion-select-option *ngFor="let user of users">{{user.first + ' ' + user.last}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
 
 <ion-button (click)=" DismissClick()">OK</ion-button>
 

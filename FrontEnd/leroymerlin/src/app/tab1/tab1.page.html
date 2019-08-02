@@ -47,7 +47,7 @@
 
                   <ion-card-content>
                     <img src="https://via.placeholder.com/300x300">
-                    <ion-button (click)="quantity()">Rent</ion-button>
+                    <ion-button (click)="addToCart(product); quantity()">Add to cart</ion-button>
                   </ion-card-content>
                 </ion-card-header>
               </ion-card>
@@ -72,7 +72,7 @@
                         
 
                 </ion-card-content>
-                <ion-button (click)="quantity()">Rent</ion-button>
+                <ion-button (click)="addToCart(product); quantity()">Add to cart</ion-button>
               </ion-card-header>
             </ion-card>
 
@@ -86,7 +86,7 @@
                   </ion-card-title>
                   <ion-card-content>
                     <img  src="assets/Tillie-V2.jpg">
-                    <ion-button (click)="quantity()">Rent</ion-button>
+                    <ion-button (click)="addToCart(product); quantity()">Add to cart</ion-button>
                   </ion-card-content>
                 </ion-card-header>
               </ion-card>

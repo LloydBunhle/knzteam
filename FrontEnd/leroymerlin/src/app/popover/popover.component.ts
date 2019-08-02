@@ -10,19 +10,9 @@ export class PopoverComponent implements OnInit {
 
   constructor(private popoverController: PopoverController) { }
 
-  private currentNumber = 0;
-
-
-private increment () {
-  this.currentNumber++;
-  console.log("increment")
-}
-
-private decrement () {
-  this.currentNumber--;
-}
-
-  ngOnInit() {}
+  ngOnInit() {
+   
+  }
 
   async DismissClick() {
     await this.popoverController.dismiss();
